@@ -55,7 +55,7 @@ class TestRepositories(
 
     @Test
     fun given1ValeurAvec2Cours_whenQueryAllCours_then2CoursAreReturned() {
-        Assertions.assertThat<Cours>(repositoryCours.queryJoinValeur())
+        Assertions.assertThat<Cours>(repositoryCours.findAll())
             .hasSize(2)
     }
 }

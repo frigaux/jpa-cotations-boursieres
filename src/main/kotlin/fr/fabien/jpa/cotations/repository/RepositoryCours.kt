@@ -10,7 +10,4 @@ import java.time.LocalDate
 interface RepositoryCours : CrudRepository<Cours, Int> {
     @Query("SELECT c FROM Cours c WHERE c.valeur = :valeur AND c.date <= :date ORDER BY c.date DESC LIMIT 300")
     fun query300BeforeDate(@Param("valeur") valeur: Valeur, @Param("date") date: LocalDate): List<Cours>
-
-    @Query("SELECT c FROM Cours c INNER JOIN FETCH c.valeur")
-    fun queryJoinValeur(): List<Cours>
 }
