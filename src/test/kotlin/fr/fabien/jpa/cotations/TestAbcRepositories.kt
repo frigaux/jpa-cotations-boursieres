@@ -47,31 +47,31 @@ class TestAbcRepositories(
     }
 
     @Test
-    fun given2Cotations_whenFindAll_then2CotationsAreReturned() {
+    fun `Given 2 Cotations when findAll then return 2 Cotations`() {
         Assertions.assertThat<AbcCotation>(repositoryAbcCotation.findAll())
             .hasSize(2)
     }
 
     @Test
-    fun given2Libelles_whenFindAll_then2LibellesAreReturned() {
+    fun `Given 2 Libelles when findAll then return 2 Libelles`() {
         Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.findAll())
             .hasSize(2)
     }
 
     @Test
-    fun given2Libelles_whenFindByDateAndTicker_then1LibelleIsReturned() {
+    fun `Given 2 Libelles when findByDateAndTickerIn then return 1 Libelle`() {
         Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.findByDateAndTickerIn(LocalDate.now(), listOf("GLE")))
             .hasSize(1)
     }
 
     @Test
-    fun given2Libelles_whenQueryByDateAndTicker_then1LibelleIsReturned() {
+    fun `Given 2 Libelles when queryByDateAndTickerIn then return 1 Libelle`() {
         Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.queryByDateAndTickerIn(LocalDate.now(), listOf("GLE")))
             .hasSize(1)
     }
 
     @Test
-    fun given2Libelles_whenQueryByDate_then1LibelleIsReturned() {
+    fun `Given 2 Libelles when queryByDate then return 1 Libelle`() {
         Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.queryByDate(LocalDate.now()))
             .hasSize(1)
     }

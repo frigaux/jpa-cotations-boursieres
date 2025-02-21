@@ -42,43 +42,43 @@ class TestRepositories(
     }
 
     @Test
-    fun given1Valeur_whenQueryValeur_then1ValeurIsReturned() {
+    fun `Given 1 Valeur when queryJoinCoursByDate then return 1 Valeur`() {
         Assertions.assertThat<Valeur>(repositoryValeur.queryJoinCoursByDate(LocalDate.now()))
             .hasSize(1)
     }
 
     @Test
-    fun given1Valeur_whenQueryJoinLastCours_then1ValeurIsReturned() {
+    fun `Given 1 Valeur when queryJoinLastCours then return 1 Valeur`() {
         Assertions.assertThat<Valeur>(repositoryValeur.queryJoinLastCours())
             .hasSize(1)
     }
 
     @Test
-    fun given1ValeurAvec2Cours_whenQueryAllCours_then2CoursAreReturned() {
+    fun `Given 1 Valeur avec 2 Cours when findAll then return 2 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.findAll())
             .hasSize(2)
     }
 
     @Test
-    fun given1ValeurAvec2Cours_whenQueryCoursByDate_then1CoursIsReturned() {
+    fun `Given 1 Valeur avec 2 Cours when queryBeforeDateByValeur then return 1 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.queryBeforeDateByValeur(valeur!!, LocalDate.now().minusDays(1), 2))
             .hasSize(1)
     }
 
     @Test
-    fun given2Cours_whenQueryJoinValeur_then2CoursAreReturned() {
+    fun `Given 1 Valeur avec 2 Cours when queryJoinValeur then return 2 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.queryJoinValeur())
             .hasSize(2)
     }
 
     @Test
-    fun given2Cours_whenQueryLast_then1CoursIsReturned() {
+    fun `Given 1 Valeur avec 2 Cours when queryLastByTicker then return 1 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.queryLastByTicker("GLE"))
             .isNotNull
     }
 
     @Test
-    fun given2Cours_whenQueryLatestByTicker_then2CoursAreReturned() {
+    fun `Given 1 Valeur avec 2 Cours when queryLatestByTicker then return 2 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.queryLatestByTicker("GLE", 3))
             .hasSize(2)
     }
