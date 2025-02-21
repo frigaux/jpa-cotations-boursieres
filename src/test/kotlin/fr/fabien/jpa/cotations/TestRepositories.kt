@@ -48,14 +48,38 @@ class TestRepositories(
     }
 
     @Test
-    fun given1ValeurAvec2Cours_whenQueryCoursByDate_then1CoursIsReturned() {
-        Assertions.assertThat<Cours>(repositoryCours.query300BeforeDate(valeur!!, LocalDate.now().minusDays(1)))
+    fun given1Valeur_whenQueryJoinLastCours_then1ValeurIsReturned() {
+        Assertions.assertThat<Valeur>(repositoryValeur.queryJoinLastCours())
             .hasSize(1)
     }
 
     @Test
     fun given1ValeurAvec2Cours_whenQueryAllCours_then2CoursAreReturned() {
         Assertions.assertThat<Cours>(repositoryCours.findAll())
+            .hasSize(2)
+    }
+
+    @Test
+    fun given1ValeurAvec2Cours_whenQueryCoursByDate_then1CoursIsReturned() {
+        Assertions.assertThat<Cours>(repositoryCours.queryBeforeDateByValeur(valeur!!, LocalDate.now().minusDays(1), 2))
+            .hasSize(1)
+    }
+
+    @Test
+    fun given2Cours_whenQueryJoinValeur_then2CoursAreReturned() {
+        Assertions.assertThat<Cours>(repositoryCours.queryJoinValeur())
+            .hasSize(2)
+    }
+
+    @Test
+    fun given2Cours_whenQueryLast_then1CoursIsReturned() {
+        Assertions.assertThat<Cours>(repositoryCours.queryLastByTicker("GLE"))
+            .isNotNull
+    }
+
+    @Test
+    fun given2Cours_whenQueryLatestByTicker_then2CoursAreReturned() {
+        Assertions.assertThat<Cours>(repositoryCours.queryLatestByTicker("GLE", 3))
             .hasSize(2)
     }
 }

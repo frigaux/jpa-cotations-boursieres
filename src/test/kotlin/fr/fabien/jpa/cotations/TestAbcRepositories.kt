@@ -53,14 +53,26 @@ class TestAbcRepositories(
     }
 
     @Test
-    fun given2Libelles_whenQueryByDate_then1LibelleIsReturned() {
-        Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.queryByDate(LocalDate.now()))
+    fun given2Libelles_whenFindAll_then2LibellesAreReturned() {
+        Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.findAll())
+            .hasSize(2)
+    }
+
+    @Test
+    fun given2Libelles_whenFindByDateAndTicker_then1LibelleIsReturned() {
+        Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.findByDateAndTickerIn(LocalDate.now(), listOf("GLE")))
             .hasSize(1)
     }
 
     @Test
     fun given2Libelles_whenQueryByDateAndTicker_then1LibelleIsReturned() {
         Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.queryByDateAndTickerIn(LocalDate.now(), listOf("GLE")))
+            .hasSize(1)
+    }
+
+    @Test
+    fun given2Libelles_whenQueryByDate_then1LibelleIsReturned() {
+        Assertions.assertThat<AbcLibelle>(repositoryAbcLibelle.queryByDate(LocalDate.now()))
             .hasSize(1)
     }
 }

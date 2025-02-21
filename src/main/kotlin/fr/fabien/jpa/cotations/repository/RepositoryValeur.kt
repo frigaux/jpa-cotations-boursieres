@@ -9,4 +9,7 @@ import java.time.LocalDate
 interface RepositoryValeur : CrudRepository<Valeur, Int> {
     @Query("SELECT l FROM Valeur l JOIN FETCH l.cours c WHERE c.date = :date")
     fun queryJoinCoursByDate(@Param("date") date: LocalDate): List<Valeur>
+
+    @Query("SELECT l FROM Valeur l JOIN FETCH l.cours c WHERE c.date = (SELECT max(date) FROM Cours c)")
+    fun queryJoinLastCours(): List<Valeur>
 }
