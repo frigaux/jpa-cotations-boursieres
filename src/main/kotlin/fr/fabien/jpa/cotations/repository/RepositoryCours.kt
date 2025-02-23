@@ -22,7 +22,7 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
         "SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker" +
                 " AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker = :ticker)"
     )
-    fun queryLastByTicker(@Param("ticker") ticker: String): Cours
+    fun queryLastByTicker(@Param("ticker") ticker: String): Cours?
 
     @Query(
         "SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker" +

@@ -54,6 +54,12 @@ class TestRepositories(
     }
 
     @Test
+    fun `Given 1 Valeur when findByTicker then return 1 Valeur`() {
+        Assertions.assertThat<Valeur>(repositoryValeur.findByTicker("GLE"))
+            .isNotNull
+    }
+
+    @Test
     fun `Given 1 Valeur avec 2 Cours when findAll then return 2 Cours`() {
         Assertions.assertThat<Cours>(repositoryCours.findAll())
             .hasSize(2)
