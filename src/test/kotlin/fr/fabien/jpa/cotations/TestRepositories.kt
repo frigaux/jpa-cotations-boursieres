@@ -88,4 +88,10 @@ class TestRepositories(
         Assertions.assertThat<Cours>(repositoryCours.queryLatestByTicker("GLE", 3))
             .hasSize(2)
     }
+
+    @Test
+    fun `Given 1 Valeur avec 2 Cours when queryLatestLightByTicker then return 2 Cours`() {
+        Assertions.assertThat<Array<Object>>(repositoryCours.queryLatestLightByTicker("GLE", 3))
+            .hasSize(2)
+    }
 }
