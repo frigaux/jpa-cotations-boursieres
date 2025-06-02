@@ -35,4 +35,17 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
                 " ORDER BY c.date DESC LIMIT :limit"
     )
     fun queryLatestLightByTicker(@Param("ticker") ticker: String, @Param("limit") limit: Int): List<Array<Object>>
+
+    @Query(
+        "SELECT c FROM Cours c INNER JOIN FETCH c.valeur" +
+                " WHERE c.valeur.ticker IN (:tickers)" +
+                " AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker IN (:tickers))"
+    )
+    fun queryLastByTickers(@Param("tickers") tickers: Set<String>): List<Cours>
+
+    @Query(
+        "SELECT c.valeur.ticker, c.date, c.ouverture, c.volume, c.alerte FROM Cours c WHERE c.valeur.ticker IN (:tickers)" +
+                " ORDER BY c.date DESC LIMIT :limit"
+    )
+    fun queryLatestLightByTickers(@Param("tickers") tickers: Set<String>, @Param("limit") limit: Int): List<Array<Object>>
 }
