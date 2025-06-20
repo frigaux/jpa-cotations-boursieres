@@ -10,7 +10,7 @@ import java.time.LocalDate
         Index(columnList = "date"),
     ],
     uniqueConstraints = [
-        UniqueConstraint(name = "UniqueDateEtTicker", columnNames = ["date", "ticker"])
+        UniqueConstraint(name = "UniqueAbcDateEtTicker", columnNames = ["date", "ticker"])
     ]
 )
 class AbcLibelle(
