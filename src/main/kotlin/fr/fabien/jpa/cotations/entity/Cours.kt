@@ -42,9 +42,6 @@ class Cours(
     @Convert(converter = MutableListDoubleConverter::class)
     val moyennesMobiles: MutableList<Double>,
 
-    @Column(nullable = false)
-    var alerte: Boolean,
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null
