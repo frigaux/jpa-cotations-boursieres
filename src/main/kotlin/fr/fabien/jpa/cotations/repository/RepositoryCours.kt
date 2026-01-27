@@ -1,7 +1,7 @@
 package fr.fabien.jpa.cotations.repository
 
-import fr.fabien.jpa.cotations.entity.Cours
-import fr.fabien.jpa.cotations.entity.Valeur
+import fr.fabien.jpa.cotations.entities.Cours
+import fr.fabien.jpa.cotations.entities.Valeur
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.query.Param

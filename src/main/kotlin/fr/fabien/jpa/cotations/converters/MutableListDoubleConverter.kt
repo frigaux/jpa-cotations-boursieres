@@ -1,4 +1,4 @@
-package fr.fabien.jpa.cotations
+package fr.fabien.jpa.cotations.converters
 
 import jakarta.persistence.AttributeConverter
 

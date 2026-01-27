@@ -1,7 +1,8 @@
 package fr.fabien.jpa.cotations
 
-import fr.fabien.jpa.cotations.entity.abcbourse.AbcCotation
-import fr.fabien.jpa.cotations.entity.abcbourse.AbcLibelle
+import fr.fabien.jpa.cotations.entities.abcbourse.AbcCotation
+import fr.fabien.jpa.cotations.entities.abcbourse.AbcLibelle
+import fr.fabien.jpa.cotations.enumerations.Marche
 import fr.fabien.jpa.cotations.repository.abcbourse.RepositoryAbcCotation
 import fr.fabien.jpa.cotations.repository.abcbourse.RepositoryAbcLibelle
 import org.assertj.core.api.Assertions

@@ -1,6 +1,6 @@
-package fr.fabien.jpa.cotations.entity.boursorama
+package fr.fabien.jpa.cotations.entities.boursorama
 
-import fr.fabien.jpa.cotations.Marche
+import fr.fabien.jpa.cotations.enumerations.Marche
 import jakarta.persistence.*
 import java.time.LocalDate
 

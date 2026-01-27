@@ -1,6 +1,6 @@
-package fr.fabien.jpa.cotations.entity
+package fr.fabien.jpa.cotations.entities
 
-import fr.fabien.jpa.cotations.Marche
+import fr.fabien.jpa.cotations.enumerations.Marche
 import jakarta.persistence.*
 
 @Entity

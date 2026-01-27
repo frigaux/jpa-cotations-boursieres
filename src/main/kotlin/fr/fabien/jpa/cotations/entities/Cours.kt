@@ -1,6 +1,6 @@
-package fr.fabien.jpa.cotations.entity
+package fr.fabien.jpa.cotations.entities
 
-import fr.fabien.jpa.cotations.MutableListDoubleConverter
+import fr.fabien.jpa.cotations.converters.MutableListDoubleConverter
 import jakarta.persistence.*
 import java.time.LocalDate
 

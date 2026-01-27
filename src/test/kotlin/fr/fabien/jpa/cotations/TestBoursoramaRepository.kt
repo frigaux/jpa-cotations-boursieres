@@ -1,7 +1,7 @@
 package fr.fabien.jpa.cotations
 
-import fr.fabien.jpa.cotations.entity.abcbourse.AbcLibelle
-import fr.fabien.jpa.cotations.entity.boursorama.BoursoramaCours
+import fr.fabien.jpa.cotations.entities.boursorama.BoursoramaCours
+import fr.fabien.jpa.cotations.enumerations.Marche
 import fr.fabien.jpa.cotations.repository.boursorama.RepositoryBoursoramaCours
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -11,7 +11,7 @@ import java.time.LocalDate
 import kotlin.test.BeforeTest
 
 @DataJpaTest
-class TestBoursoramaRepositories(
+class TestBoursoramaRepository(
     @Autowired private val repositoryBoursoramaCours: RepositoryBoursoramaCours
 ) {
 

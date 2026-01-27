@@ -1,4 +1,4 @@
-package fr.fabien.jpa.cotations.entity.abcbourse
+package fr.fabien.jpa.cotations.entities.abcbourse
 
 import jakarta.persistence.*
 

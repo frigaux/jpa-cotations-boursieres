@@ -1,7 +1,8 @@
 package fr.fabien.jpa.cotations
 
-import fr.fabien.jpa.cotations.entity.Cours
-import fr.fabien.jpa.cotations.entity.Valeur
+import fr.fabien.jpa.cotations.entities.Cours
+import fr.fabien.jpa.cotations.entities.Valeur
+import fr.fabien.jpa.cotations.enumerations.Marche
 import fr.fabien.jpa.cotations.repository.RepositoryCours
 import fr.fabien.jpa.cotations.repository.RepositoryValeur
 import org.assertj.core.api.Assertions
@@ -12,7 +13,7 @@ import java.time.LocalDate
 import kotlin.test.BeforeTest
 
 @DataJpaTest
-class TestRepositories(
+class TestValeurCoursRepositories(
     @Autowired private val repositoryValeur: RepositoryValeur,
     @Autowired private val repositoryCours: RepositoryCours
 ) {

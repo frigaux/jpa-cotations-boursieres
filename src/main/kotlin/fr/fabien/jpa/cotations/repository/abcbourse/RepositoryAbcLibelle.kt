@@ -1,6 +1,6 @@
 package fr.fabien.jpa.cotations.repository.abcbourse
 
-import fr.fabien.jpa.cotations.entity.abcbourse.AbcLibelle
+import fr.fabien.jpa.cotations.entities.abcbourse.AbcLibelle
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.query.Param

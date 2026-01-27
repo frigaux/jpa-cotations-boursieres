@@ -1,6 +1,6 @@
 package fr.fabien.jpa.cotations.repository.boursorama
 
-import fr.fabien.jpa.cotations.entity.boursorama.BoursoramaCours
+import fr.fabien.jpa.cotations.entities.boursorama.BoursoramaCours
 import org.springframework.data.repository.CrudRepository
 import java.time.LocalDate
 
