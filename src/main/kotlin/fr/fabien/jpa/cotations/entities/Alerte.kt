@@ -2,7 +2,7 @@ package fr.fabien.jpa.cotations.entities
 
 import fr.fabien.jpa.cotations.enumerations.TypeAlerte
 import fr.fabien.jpa.cotations.enumerations.TypeNotification
-import fr.fabien.jpa.cotations.util.ConditionChecker
+import fr.fabien.jpa.cotations.checker.ExpressionAlerteChecker
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -25,7 +25,7 @@ class Alerte(
     val type: TypeAlerte,
 
     @Column(nullable = false, length = 100)
-    val condition: String,
+    val expression: String,
 
     @Temporal(TemporalType.DATE)
     @Column(nullable = true)
@@ -45,6 +45,6 @@ class Alerte(
     @PreUpdate
     @PrePersist
     fun checkCondition() {
-        ConditionChecker.validerCondition(condition, type)
+        ExpressionAlerteChecker.validerExpressionSelonType(expression, type)
     }
 }

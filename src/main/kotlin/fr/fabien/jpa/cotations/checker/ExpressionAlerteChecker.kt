@@ -1,4 +1,4 @@
-package fr.fabien.jpa.cotations.util
+package fr.fabien.jpa.cotations.checker
 
 import fr.fabien.jpa.cotations.enumerations.TypeAlerte
 import net.objecthunter.exp4j.ExpressionBuilder
@@ -6,7 +6,7 @@ import net.objecthunter.exp4j.operator.Operator
 import java.util.regex.Pattern
 
 
-class ConditionChecker {
+class ExpressionAlerteChecker {
     companion object {
         private val regexpSeuilBas = Pattern.compile("^CLOTURE\\(1\\)\\s*<\\s*\\d+(\\.\\d+)?\$")
         private val regexpSeuilHaut = Pattern.compile("^CLOTURE\\(1\\)\\s*>\\s*\\d+(\\.\\d+)?\$")
@@ -103,31 +103,31 @@ class ConditionChecker {
             }
         }
 
-        private fun validerAvecRegexp(regexp: Pattern, condition: String) {
-            if (!regexp.matcher(condition).find())
-                throw IllegalArgumentException(condition)
+        private fun validerAvecRegexp(expression: String, regexp: Pattern) {
+            if (!regexp.matcher(expression).find())
+                throw IllegalArgumentException(expression)
         }
 
-        fun validerCondition(condition: String, type: TypeAlerte) {
+        fun validerExpressionSelonType(expression: String, type: TypeAlerte) {
             when(type) {
-                TypeAlerte.LIBRE -> ExpressionBuilder(condition)
+                TypeAlerte.LIBRE -> ExpressionBuilder(expression)
                     .operator(ou, et, plusGrand, plusGrandOuEgal, plusPetit, plusPetitOuEgal)
                     .functions(cloture, moyenneMobile, variation, plusHaut, plusBas)
                     .build()
                     .evaluate()
-                TypeAlerte.SEUIL_BAS -> validerAvecRegexp(regexpSeuilBas, condition)
-                TypeAlerte.SEUIL_HAUT -> validerAvecRegexp(regexpSeuilHaut, condition)
-                TypeAlerte.VARIATION -> validerAvecRegexp(regexpVariation, condition)
-                TypeAlerte.TUNNEL -> validerAvecRegexp(regexpTunnel, condition)
-                TypeAlerte.CROISEMENT_MM_BAS -> validerAvecRegexp(regexpCroisementMmBas, condition)
-                TypeAlerte.CROISEMENT_MM_HAUT -> validerAvecRegexp(regexpCroisementMmHaut, condition)
-                TypeAlerte.PLUS_HAUT -> validerAvecRegexp(regexpPlusHaut, condition)
-                TypeAlerte.PLUS_BAS -> validerAvecRegexp(regexpPlusBas, condition)
+                TypeAlerte.SEUIL_BAS -> validerAvecRegexp(expression, regexpSeuilBas)
+                TypeAlerte.SEUIL_HAUT -> validerAvecRegexp(expression, regexpSeuilHaut)
+                TypeAlerte.VARIATION -> validerAvecRegexp(expression, regexpVariation)
+                TypeAlerte.TUNNEL -> validerAvecRegexp(expression, regexpTunnel)
+                TypeAlerte.CROISEMENT_MM_BAS -> validerAvecRegexp(expression, regexpCroisementMmBas)
+                TypeAlerte.CROISEMENT_MM_HAUT -> validerAvecRegexp(expression, regexpCroisementMmHaut)
+                TypeAlerte.PLUS_HAUT -> validerAvecRegexp(expression, regexpPlusHaut)
+                TypeAlerte.PLUS_BAS -> validerAvecRegexp(expression, regexpPlusBas)
             }
 
         }
     }
 }
 fun main(vararg args: String) {
-    ConditionChecker.validerCondition("(CLOTURE(23) > 23.5) || (CLOTURE(23) >= 24.6)", TypeAlerte.LIBRE)
+    ExpressionAlerteChecker.validerExpressionSelonType("(CLOTURE(23) > 23.5) || (CLOTURE(23) >= 24.6)", TypeAlerte.LIBRE)
 }
