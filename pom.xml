@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -25,9 +25,15 @@
         <maven.compiler.release>21</maven.compiler.release>
         <java.version>21</java.version>
 
+        <!-- kotlin -->
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
-        <kotlin.version>2.1.0</kotlin.version>
+        <kotlin.version>2.2.21</kotlin.version>
+
+        <jupiter.version>5.12.2</jupiter.version>
+        <kotlin.logging.version>3.0.5</kotlin.logging.version>
+        <h2.version>2.3.232</h2.version>
+        <exp4j.version>0.4.8</exp4j.version>
     </properties>
 
     <repositories>
@@ -62,7 +68,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.11.4</version>
+            <version>${jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -70,7 +76,7 @@
         <dependency>
             <groupId>io.github.microutils</groupId>
             <artifactId>kotlin-logging-jvm</artifactId>
-            <version>3.0.5</version>
+            <version>${kotlin.logging.version}</version>
         </dependency>
 
         <!-- Spring boot-->
@@ -90,7 +96,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.3.232</version>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -98,7 +104,7 @@
         <dependency>
             <groupId>net.objecthunter</groupId>
             <artifactId>exp4j</artifactId>
-            <version>0.4.8</version>
+            <version>${exp4j.version}</version>
         </dependency>
     </dependencies>
 
