@@ -1,7 +1,7 @@
 package fr.fabien.jpa.cotations.repository
 
 import fr.fabien.jpa.cotations.entities.Alerte
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.ListCrudRepository
 
-interface RepositoryAlerte : CrudRepository<Alerte, Int> {
+interface RepositoryAlerte : ListCrudRepository<Alerte, Int> {
 }

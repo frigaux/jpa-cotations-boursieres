@@ -9,7 +9,7 @@ import java.time.LocalDate
 @Entity
 @Table(
     uniqueConstraints = [
-        UniqueConstraint(name = "UniqueNom", columnNames = ["nom"])
+        UniqueConstraint(name = "UniqueLibelle", columnNames = ["libelle"])
     ]
 )
 class Alerte(
@@ -18,7 +18,7 @@ class Alerte(
     val valeur: Valeur,
 
     @Column(nullable = false, length = 100)
-    val nom: String,
+    val libelle: String,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
