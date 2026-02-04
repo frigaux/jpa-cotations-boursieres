@@ -105,7 +105,7 @@ class ExpressionAlerteChecker {
 
         private fun validerAvecRegexp(expression: String, regexp: Pattern) {
             if (!regexp.matcher(expression).find())
-                throw IllegalArgumentException(expression)
+                throw IllegalArgumentException("expression invalide : ${expression}")
         }
 
         fun validerExpressionSelonType(expression: String, type: TypeAlerte) {
