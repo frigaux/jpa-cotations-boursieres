@@ -14,29 +14,29 @@ import java.time.LocalDate
 )
 class Alerte(
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "idValeur", nullable = false, updatable = false)
-    val valeur: Valeur,
+    @JoinColumn(name = "idValeur", nullable = false)
+    var valeur: Valeur,
 
     @Column(nullable = false, length = 100)
-    val libelle: String,
+    var libelle: String,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val type: TypeAlerte,
+    var type: TypeAlerte,
 
     @Column(nullable = false, length = 100)
-    val expression: String,
+    var expression: String,
 
     @Temporal(TemporalType.DATE)
     @Column(nullable = true)
-    val dateLimite: LocalDate?,
+    var dateLimite: LocalDate?,
 
     @Column(nullable = false)
-    val declenchementUnique: Boolean,
+    var declenchementUnique: Boolean,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val notification: TypeNotification,
+    var notification: TypeNotification,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
