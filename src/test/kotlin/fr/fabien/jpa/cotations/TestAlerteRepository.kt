@@ -29,7 +29,7 @@ class TestAlerteRepository(
     @BeforeTest
     fun setup() {
         valeurGLE = Valeur("GLE", Marche.EURO_LIST_A, "Societe Generale", setOf())
-        repositoryValeur.save(valeurGLE)
+        valeurGLE = repositoryValeur.save(valeurGLE)
 
         repositoryAlerte.save(Alerte(
             valeurGLE, "la clôture est supérieure à la MM50 et la variation du cours supérieure à 2%",
@@ -45,6 +45,15 @@ class TestAlerteRepository(
     @Test
     fun `Given 1 Alerte when findAll then return 1 Alerte`() {
         Assertions.assertThat<Alerte>(repositoryAlerte.findAll())
+            .hasSize(1)
+
+        Assertions.assertThat<Alerte>(repositoryAlerte.queryByTicker(valeurGLE.ticker))
+            .hasSize(1)
+
+        Assertions.assertThat<Alerte>(repositoryAlerte.findByValeurOrderByDateLimiteDesc(valeurGLE))
+            .hasSize(1)
+
+        Assertions.assertThat<Alerte>(repositoryAlerte.queryByTickers(setOf("GLE")))
             .hasSize(1)
     }
 
