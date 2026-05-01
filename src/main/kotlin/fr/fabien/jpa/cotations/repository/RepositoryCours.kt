@@ -19,33 +19,53 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
     fun queryJoinValeur(): List<Cours>
 
     @Query(
-        "SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker" +
-                " AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker = :ticker)"
+        """
+                    SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker
+                    AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker = :ticker)
+                """
     )
     fun queryLastByTicker(@Param("ticker") ticker: String): Cours?
 
     @Query(
-        "SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker" +
-                " ORDER BY c.date DESC LIMIT :limit"
+        """
+                    SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker
+                    ORDER BY c.date DESC LIMIT :limit
+                """
     )
     fun queryLatestByTicker(@Param("ticker") ticker: String, @Param("limit") limit: Int): List<Cours>
 
     @Query(
-        "SELECT c.date, c.cloture, c.volume FROM Cours c WHERE c.valeur.ticker = :ticker" +
-                " ORDER BY c.date DESC LIMIT :limit"
+        """
+                    SELECT c.date, c.cloture, c.volume FROM Cours c WHERE c.valeur.ticker = :ticker
+                    ORDER BY c.date DESC LIMIT :limit
+                """
     )
     fun queryLatestLightByTicker(@Param("ticker") ticker: String, @Param("limit") limit: Int): List<Array<Object>>
 
     @Query(
-        "SELECT c FROM Cours c INNER JOIN FETCH c.valeur" +
-                " WHERE c.valeur.ticker IN (:tickers)" +
-                " AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker IN (:tickers))"
+        """
+                    SELECT c FROM Cours c INNER JOIN FETCH c.valeur
+                    WHERE c.valeur.ticker IN (:tickers)
+                    AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker IN (:tickers))
+                    
+                """
     )
     fun queryLastByTickers(@Param("tickers") tickers: Set<String>): List<Cours>
 
     @Query(
-        "SELECT c.valeur.ticker, c.date, c.cloture, c.volume FROM Cours c WHERE c.valeur.ticker IN (:tickers)" +
-                " ORDER BY c.date DESC LIMIT :limit"
+        """
+                    SELECT c.valeur.ticker, c.date, c.cloture, c.volume FROM Cours c WHERE c.valeur.ticker IN (:tickers)
+                    AND c.date >= :dateMin
+                    ORDER BY c.date DESC
+                """
     )
-    fun queryLatestLightByTickers(@Param("tickers") tickers: Set<String>, @Param("limit") limit: Int): List<Array<Object>>
+    fun queryLatestLightByTickers(@Param("tickers") tickers: Set<String>, @Param("dateMin") dateMin: LocalDate): List<Array<Object>>
+
+    @Query(
+        """
+                    SELECT DISTINCT c.date FROM Cours c WHERE c.valeur.ticker IN (:tickers)
+                    ORDER BY c.date DESC LIMIT 1 OFFSET :offset
+                """
+    )
+    fun queryDateByOffset(@Param("tickers") tickers: Set<String>, @Param("offset") offset: Int): LocalDate?
 }

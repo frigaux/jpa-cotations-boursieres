@@ -127,7 +127,8 @@ class TestValeurCoursRepositories(
 
     @Test
     fun `Given 2 Valeur avec 2 Cours when queryLatestLightByTickers then return 4 Cours`() {
-        Assertions.assertThat<Array<Object>>(repositoryCours.queryLatestLightByTickers(setOf("GLE", "BNP"), 6))
+        val dateMin = repositoryCours.queryDateByOffset(setOf("GLE", "BNP"), 1);
+        Assertions.assertThat<Array<Object>>(repositoryCours.queryLatestLightByTickers(setOf("GLE", "BNP"), dateMin?:LocalDate.now()))
             .hasSize(4)
     }
 }
