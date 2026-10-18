@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.3</version>
+        <version>4.1.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -28,9 +28,9 @@
         <!-- kotlin -->
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
-        <kotlin.version>2.2.21</kotlin.version>
+        <kotlin.version>2.4.20</kotlin.version>
 
-        <jupiter.version>5.12.2</jupiter.version>
+        <jupiter.version>6.0.3</jupiter.version>
         <kotlin.logging.version>3.0.5</kotlin.logging.version>
         <h2.version>2.3.232</h2.version>
         <exp4j.version>0.4.8</exp4j.version>
@@ -80,17 +80,14 @@
             <version>${kotlin.logging.version}</version>
         </dependency>
 
-        <!-- Spring boot-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa-test</artifactId>
         </dependency>
 
         <!-- H2 (test) -->

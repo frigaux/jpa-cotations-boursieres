@@ -18,7 +18,6 @@ class Cours(
     @JoinColumn(name = "idValeur", nullable = false, updatable = false)
     val valeur: Valeur,
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false, updatable = false)
     val date: LocalDate,
 

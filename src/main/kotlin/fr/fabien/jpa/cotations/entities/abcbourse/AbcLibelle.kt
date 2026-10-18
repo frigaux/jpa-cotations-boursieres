@@ -14,7 +14,6 @@ import java.time.LocalDate
     ]
 )
 class AbcLibelle(
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false, updatable = false)
     val date: LocalDate,
 

@@ -24,7 +24,6 @@ class BoursoramaCours(
     @Column(nullable = false, length = 100)
     var nom: String,
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false, updatable = false)
     val date: LocalDate,
 

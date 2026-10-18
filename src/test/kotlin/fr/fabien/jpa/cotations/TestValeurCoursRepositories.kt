@@ -8,7 +8,7 @@ import fr.fabien.jpa.cotations.repository.RepositoryValeur
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest
 import java.time.LocalDate
 import kotlin.test.BeforeTest
 
@@ -116,7 +116,7 @@ class TestValeurCoursRepositories(
 
     @Test
     fun `Given 2 Valeur avec 2 Cours when queryLatestLightByTicker then return 2 Cours`() {
-        Assertions.assertThat<Array<Object>>(repositoryCours.queryLatestLightByTicker("GLE", 3))
+        Assertions.assertThat<Array<Any>>(repositoryCours.queryLatestLightByTicker("GLE", 3))
             .hasSize(2)
     }
 
@@ -128,7 +128,12 @@ class TestValeurCoursRepositories(
     @Test
     fun `Given 2 Valeur avec 2 Cours when queryLatestLightByTickers then return 4 Cours`() {
         val dateMin = repositoryCours.queryDateByOffset(setOf("GLE", "BNP"), 1);
-        Assertions.assertThat<Array<Object>>(repositoryCours.queryLatestLightByTickers(setOf("GLE", "BNP"), dateMin?:LocalDate.now()))
+        Assertions.assertThat<Array<Any>>(
+            repositoryCours.queryLatestLightByTickers(
+                setOf("GLE", "BNP"),
+                dateMin ?: LocalDate.now()
+            )
+        )
             .hasSize(4)
     }
 }

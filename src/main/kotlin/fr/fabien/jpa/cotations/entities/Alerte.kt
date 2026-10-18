@@ -1,8 +1,8 @@
 package fr.fabien.jpa.cotations.entities
 
+import fr.fabien.jpa.cotations.checker.ExpressionAlerteChecker
 import fr.fabien.jpa.cotations.enumerations.TypeAlerte
 import fr.fabien.jpa.cotations.enumerations.TypeNotification
-import fr.fabien.jpa.cotations.checker.ExpressionAlerteChecker
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -27,7 +27,6 @@ class Alerte(
     @Column(nullable = false, length = 100)
     var expression: String,
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = true)
     var dateLimite: LocalDate?,
 

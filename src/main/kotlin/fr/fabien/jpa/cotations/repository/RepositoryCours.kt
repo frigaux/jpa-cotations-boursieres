@@ -21,7 +21,7 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
     @Query(
         """
                     SELECT c FROM Cours c WHERE c.valeur.ticker = :ticker
-                    AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker = :ticker)
+                    AND c.date = (SELECT max(c.date) FROM Cours c WHERE c.valeur.ticker = :ticker)
                 """
     )
     fun queryLastByTicker(@Param("ticker") ticker: String): Cours?
@@ -40,13 +40,13 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
                     ORDER BY c.date DESC LIMIT :limit
                 """
     )
-    fun queryLatestLightByTicker(@Param("ticker") ticker: String, @Param("limit") limit: Int): List<Array<Object>>
+    fun queryLatestLightByTicker(@Param("ticker") ticker: String, @Param("limit") limit: Int): List<Array<Any>>
 
     @Query(
         """
                     SELECT c FROM Cours c INNER JOIN FETCH c.valeur
                     WHERE c.valeur.ticker IN (:tickers)
-                    AND c.date = (SELECT max(date) FROM Cours c WHERE c.valeur.ticker IN (:tickers))
+                    AND c.date = (SELECT max(c.date) FROM Cours c WHERE c.valeur.ticker IN (:tickers))
                     
                 """
     )
@@ -59,7 +59,10 @@ interface RepositoryCours : CrudRepository<Cours, Int> {
                     ORDER BY c.date DESC
                 """
     )
-    fun queryLatestLightByTickers(@Param("tickers") tickers: Set<String>, @Param("dateMin") dateMin: LocalDate): List<Array<Object>>
+    fun queryLatestLightByTickers(
+        @Param("tickers") tickers: Set<String>,
+        @Param("dateMin") dateMin: LocalDate
+    ): List<Array<Any>>
 
     @Query(
         """
