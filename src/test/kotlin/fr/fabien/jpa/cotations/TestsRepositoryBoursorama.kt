@@ -11,7 +11,7 @@ import java.time.LocalDate
 import kotlin.test.BeforeTest
 
 @DataJpaTest
-class TestBoursoramaRepository(
+class TestsRepositoryBoursorama(
     @Autowired private val repositoryBoursoramaCours: RepositoryBoursoramaCours
 ) {
 

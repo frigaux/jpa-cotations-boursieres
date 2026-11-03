@@ -13,7 +13,7 @@ import java.time.LocalDate
 import kotlin.test.BeforeTest
 
 @DataJpaTest
-class TestValeurCoursRepositories(
+class TestsRepositoriesValeurCours(
     @Autowired private val repositoryValeur: RepositoryValeur,
     @Autowired private val repositoryCours: RepositoryCours
 ) {

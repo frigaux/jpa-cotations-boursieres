@@ -17,7 +17,7 @@ import kotlin.test.BeforeTest
 
 
 @DataJpaTest
-class TestAlerteRepository(
+class TestsRepositoryAlerte(
     @Autowired private val repositoryValeur: RepositoryValeur,
     @Autowired private val repositoryAlerte: RepositoryAlerte
 ) {

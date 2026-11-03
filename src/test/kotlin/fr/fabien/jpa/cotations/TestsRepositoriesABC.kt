@@ -13,7 +13,7 @@ import java.time.LocalDate
 import kotlin.test.BeforeTest
 
 @DataJpaTest
-class TestAbcRepositories(
+class TestsRepositoriesABC(
     @Autowired private val repositoryAbcCotation: RepositoryAbcCotation,
     @Autowired private val repositoryAbcLibelle: RepositoryAbcLibelle
 ) {

@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class AccessingDataJpaApplication {
+class ApplicationTests {
     fun main() {
-        SpringApplication.run(AccessingDataJpaApplication::class.java)
+        SpringApplication.run(ApplicationTests::class.java)
     }
 }
